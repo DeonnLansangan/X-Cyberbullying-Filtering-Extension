@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Cyberbullying Detector",
+  "version": "1.0",
+  "description": "Blur tweets that contain cyberbullying content",
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.x.com/*"],
+      "js": ["src/content.js"]
+    }
+  ]
+}
