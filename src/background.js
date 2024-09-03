@@ -1,0 +1,9 @@
+chrome.runtime.onInstalled.addListener(() => {
+    console.log('Extension installed');
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.type === 'processTweets') {
+        sendResponse({ success: true });
+    }
+});
