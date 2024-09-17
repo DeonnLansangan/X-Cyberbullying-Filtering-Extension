@@ -1,15 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Cyberbullying Detector",
+  "name": "Cyberbullying Detector",
+  "description": "Detects and blurs cyberbullying content on Twitter.",
   "version": "1.0",
-  "description": "Blur tweets that contain cyberbullying content",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://group9thesis.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "background": {
     "service_worker": "src/background.js"
   },
   "content_scripts": [
     {
-      "matches": ["*://*.x.com/*"],
+      "matches": ["https://x.com/*"],
       "js": ["src/content.js"]
     }
   ]
