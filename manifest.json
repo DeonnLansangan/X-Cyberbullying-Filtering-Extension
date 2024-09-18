@@ -3,7 +3,7 @@
   "name": "CyberSafe",
   "description": "Detects and blurs cyberbullying content on X (formerly known as Twitter).",
   "version": "1.0",
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://group9thesis.com/*"],
   "action": {
     "default_popup": "popup.html"
