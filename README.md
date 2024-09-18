@@ -8,6 +8,7 @@
 - [How It Works](#how-it-works)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
+- [Local Installation](#local-installation)
   - [Prerequisites](#prerequisites)
   - [Setting Up the Flask Server](#setting-up-the-flask-server)
   - [Installing the Chrome Extension](#installing-the-chrome-extension)
@@ -58,6 +59,9 @@ CyberSafe integrates both **Support Vector Machine (SVM)** and **Long Short-Term
   - **Joblib & Pickle:** For model serialization.
 
 ## Installation
+- You install our extension from the Chrome Web Store (https://chromewebstore.google.com/detail/cybersafe/okjkiaigldmglhgdfpiifmggijbfkcdn)
+
+## Local Installation
 
 ### Prerequisites
 
