@@ -133,7 +133,7 @@ CyberSafe integrates both **Support Vector Machine (SVM)** and **Long Short-Term
 - Toggle the Developer mode switch in the top right corner.
 
 4. **Load Unpacked Extension:**
-- Click on Load unpacked and select the root directory of your cloned repository (CyberSafe).
+- Click on Load unpacked and select the root directory of your cloned repository (X-Cyberbullying-Filtering-Extension).
 
 5. **Verify Installation:**
 - The CyberSafe icon should appear in your Chrome toolbar. Click on it to access the popup interface.
