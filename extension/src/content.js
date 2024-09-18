@@ -88,7 +88,7 @@ function blurTweet(tweet) {
     warning.innerText = 'Content hidden due to potential cyberbullying.';
     warning.className = 'cyberbullying-warning';
     warning.style.position = 'absolute';
-    warning.style.background = 'rgba(255, 0, 0, 0.7)';
+    warning.style.background = 'rgba(49, 113, 211, 1)';
     warning.style.color = '#fff';
     warning.style.padding = '5px';
     warning.style.top = '0';
