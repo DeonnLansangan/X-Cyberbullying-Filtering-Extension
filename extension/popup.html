@@ -1,32 +1,27 @@
-<!-- popup.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Cyberbullying Detector</title>
-  <script src="popup.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      min-width: 200px;
-      padding: 10px;
-    }
-    h1 {
-      font-size: 18px;
-    }
-    label {
-      display: flex;
-      align-items: center;
-    }
-    input[type="checkbox"] {
-      margin-right: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe</title>
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>Cyberbullying Detector</h1>
-  <label>
-    <input type="checkbox" id="toggleBlur" checked>
-    Enable Blurring of Cyberbullying Content
-  </label>
+    <div class="container">
+        <div class="header">
+            <img src="assets/logo.png" alt="CyberSafe Logo" class="logo">
+            <h1 class="title">CyberSafe</h1>
+            <label class="switch">
+                <input type="checkbox" id="toggleBlur" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="content">
+            <div class="message">
+                <p>A safer social media experience, one click at a time.</p>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
 </body>
 </html>
