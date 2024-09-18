@@ -156,7 +156,7 @@ CyberSafe integrates both **Support Vector Machine (SVM)** and **Long Short-Term
 - Offensive tweets are automatically blurred with a warning message: "Content hidden due to potential cyberbullying."
 
 3. Toggle Feature:
-- You can enable or disable the blurring feature anytime by toggling the checkbox in the popup.
+- You can enable or disable the blurring feature anytime by toggling the button in the popup.
   
 ## Configuration
 
