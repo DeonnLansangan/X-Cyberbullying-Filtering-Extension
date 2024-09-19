@@ -1,4 +1,4 @@
-// contentScript.js
+// content.js
 
 let blurEnabled = true;
 
@@ -76,27 +76,31 @@ function processNewTweets() {
   });
 }
 
-// Function to blur a single tweet
+// Function to blur a single tweet and add interactive warning
 function blurTweet(tweet) {
-  // Blur the tweet
+  // Apply blur to the tweet
   tweet.style.filter = 'blur(5px)';
   tweet.style.position = 'relative';
 
   // Add a warning overlay if not already present
   if (!tweet.parentElement.querySelector('.cyberbullying-warning')) {
     const warning = document.createElement('div');
-    warning.innerText = 'Content hidden due to potential cyberbullying.';
     warning.className = 'cyberbullying-warning';
-    warning.style.position = 'absolute';
-    warning.style.background = 'rgba(49, 113, 211, 1)';
-    warning.style.color = '#fff';
-    warning.style.padding = '5px';
-    warning.style.top = '0';
-    warning.style.left = '0';
-    warning.style.width = '100%';
-    warning.style.textAlign = 'center';
-    tweet.parentElement.style.position = 'relative';
+    warning.innerHTML = 'Content is blurred due to potential cyberbullying warning. <span class="view-override">View anyway?</span>';
+
+    tweet.parentElement.style.position = 'relative'; // Ensure parent is positioned
     tweet.parentElement.appendChild(warning);
+
+    // Add event listener to the "View anyway?" span
+    const viewAnyway = warning.querySelector('.view-override');
+
+    viewAnyway.addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent event bubbling
+      // Unblur the tweet
+      tweet.style.filter = '';
+      // Remove the warning overlay
+      warning.remove();
+    });
   }
 }
 
