@@ -6,6 +6,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from flask_cors import CORS  # Import CORS
+import re
 
 app = Flask(__name__)
 
@@ -32,22 +33,39 @@ meta_model = joblib.load('meta_model.pkl')
 # Define the maximum sequence length (should match the training setting)
 max_sequence_length = 100
 
+# Preprocessing function for tweets
+def preprocess_tweet(tweet):
+
+    # Remove URLs
+    tweet = re.sub(r'http\S+|www\S+|https\S+', '', tweet, flags=re.MULTILINE)
+
+    # Remove mentions (@username) and hashtags
+    tweet = re.sub(r'@\w+|#\w+', '', tweet)
+
+    # Remove punctuation and special characters
+    tweet = re.sub(r'[^a-zA-Z0-9\s]+', '', tweet)
+
+    return tweet
+
 @app.route('/predict_batch', methods=['POST'])
 def predict_batch():
     # Get JSON data from the request
     data = request.get_json(force=True)
 
-    # Extract the list of texts
+    # Extract the list of texts (tweets)
     texts = data.get('texts', [])
 
     if not texts or not isinstance(texts, list):
         return jsonify({'error': 'No texts provided or invalid format'}), 400
 
-    # Preprocess new data for SVM
-    new_data_svm = tfidf_vectorizer.transform(texts)
+    # Preprocess each tweet
+    preprocessed_texts = [preprocess_tweet(tweet) for tweet in texts]
 
-    # Preprocess new data for LSTM
-    new_sequences = tokenizer.texts_to_sequences(texts)
+    # Preprocess for SVM (TF-IDF Vectorization)
+    new_data_svm = tfidf_vectorizer.transform(preprocessed_texts)
+
+    # Preprocess for LSTM (Tokenization + Padding)
+    new_sequences = tokenizer.texts_to_sequences(preprocessed_texts)
     new_padded_sequences = pad_sequences(new_sequences, maxlen=max_sequence_length)
 
     # Get predictions from SVM and LSTM
@@ -69,4 +87,4 @@ def predict_batch():
 
 if __name__ == '__main__':
     # Run the Flask app
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port =80)
